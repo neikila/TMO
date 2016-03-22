@@ -18,6 +18,8 @@ class Task1 (val lambda: Double, val mu: Double) extends Task {
 
   val dir = "out/Task1/"
   override def execute: Unit = {
+    println()
+    println("   Task 1   ")
 
     var i = 1
 

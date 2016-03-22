@@ -6,8 +6,8 @@ import tasks._
   */
 
 object main {
-  val lambda = 123.0
-  val mu = 30.0
+  val lambda = 1 / 30.0
+  val mu = 1 / 123.0
   val nu = mu / 2.0
 
   def main(args: Array[String]): Unit = {
