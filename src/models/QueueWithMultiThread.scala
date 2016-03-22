@@ -1,13 +1,18 @@
 package models
 
+import utils.Utils._
+
 /**
   * Created by neikila.
   */
-class QueueWithMultiThread(val lambda: Double, val mu: Double, val states: Integer, val units: Integer) extends Model {
-  import utils.Utils._
+class QueueWithMultiThread (val lambda: Double, val mu: Double, val states: Integer, val units: Integer)
+  extends Model {
 
   val a = lambda / mu
-  val p0 = 1.0 / (0 until states).foldLeft(0.0)(_ + getProbabilityDivPo(_))
+
+  val const = spec(units)
+
+  val p0 = 1.0 / (0.0 /: (0 until states))(_ + getProbabilityDivPo(_))
   val probabilities: IndexedSeq[Double] = IndexedSeq.tabulate(states)(num => p0 * getProbabilityDivPo(num))
 
   val load = {
@@ -15,13 +20,12 @@ class QueueWithMultiThread(val lambda: Double, val mu: Double, val states: Integ
     probabilities.foldLeft(0.0)((a, b) => { if (counter < units) counter += 1; a + counter * b })
   }
 
-  override def getLoad: Double = load
+  override def getLoad: Double = load / units
 
   override def getReject: Double = probabilities(states - 1)
 
   override def getProbability(i: Int): Double = probabilities(i)
 
-  val const = spec(units)
   override def getProbabilityDivPo(i: Integer): Double = {
     if (i > units)
       const * math.pow(a / units, i - units)

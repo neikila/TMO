@@ -5,9 +5,9 @@ package models
   */
 trait Model {
 
-  def getLoad: Double
-
   def getReject: Double
+
+  def getLoad: Double
 
   def getProbability(i: Int): Double
 

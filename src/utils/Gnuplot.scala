@@ -1,6 +1,6 @@
 package utils
 
-import java.io.PrintWriter
+import java.io.{File, PrintWriter}
 
 /**
   * Created by neikila on 05.11.15.
@@ -8,6 +8,8 @@ import java.io.PrintWriter
 class Gnuplot (val directory: String) {
   val graphs = collection.mutable.MutableList[String]()
   var max = -1
+
+  new File(directory).mkdirs()
 
   def printToFile(fileName: String, list: List[(Int, Double)]): Unit = {
     graphs += fileName
@@ -24,7 +26,7 @@ class Gnuplot (val directory: String) {
     var scriptCode = "set terminal x11 size 1360, 700\n" +
       "set xlabel '" + XTitle + "'\n" +
       "set ylabel '" + YTitle + "'\n" +
-      "set xrange [" + 1 + ":" + (max - 1) + "]\n" +
+      "set xrange [:" + (max - 1) + "]\n" +
 //      "set yrange [0:" + maxY + "]\n" +
       "set grid\n" +
       "plot "
