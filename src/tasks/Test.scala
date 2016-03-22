@@ -1,6 +1,6 @@
 package tasks
 
-import models.{QueueWithMiltiThread, NoQueueMultiThread, Model}
+import models.{QueueWithMultiThread, NoQueueMultiThread, Model}
 
 /**
   * Created by neikila.

@@ -3,7 +3,7 @@ package models
 /**
   * Created by neikila.
   */
-class QueueWithMiltiThread (val lambda: Double, val mu: Double, val states: Integer, val units: Integer) extends Model {
+class QueueWithMultiThread(val lambda: Double, val mu: Double, val states: Integer, val units: Integer) extends Model {
   import utils.Utils._
 
   val a = lambda / mu
