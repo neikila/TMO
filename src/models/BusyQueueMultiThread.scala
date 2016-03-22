@@ -30,10 +30,6 @@ class BusyQueueMultiThread (val lambda: Double, val mu: Double, val units: Int, 
 
   def last = probabilities.last
 
-  override def getReject: Double = ???
-
-  override def getLoad: Double = ???
-
   override def getProbability(i: Int): Double = probabilities(i)
 
   override def getProbabilityDivPo(i: Integer): Double = {

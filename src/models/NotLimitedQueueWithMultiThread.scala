@@ -18,8 +18,6 @@ class NotLimitedQueueWithMultiThread(val lambda: Double, val mu: Double, val uni
 
   val queueAverageSize = getProbability(units) * a / units / math.pow(1 - a / units, 2)
 
-  override def getLoad: Double = ???
-
   override def getProbability(i: Int): Double = p0 * getProbabilityDivPo(i)
 
   override def getProbabilityDivPo(i: Integer): Double = {
@@ -32,6 +30,4 @@ class NotLimitedQueueWithMultiThread(val lambda: Double, val mu: Double, val uni
   def spec(i: Integer): Double = {
     math.pow(a, i.toDouble) / factor(i)
   }
-
-  override def getReject: Double = 0
 }

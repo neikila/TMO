@@ -21,6 +21,17 @@ class Gnuplot (val directory: String) {
     out.close()
   }
 
+  def printToFileBigDecimal(fileName: String, list: List[(Int, BigDecimal)]): Unit = {
+    graphs += fileName
+
+    val out = new PrintWriter(directory + fileName)
+    var num = 0
+    list.foreach((tuple) => {out.println(tuple._1 + " " + tuple._2); num += 1; })
+    if (list.last._1 > max) max = list.last._1
+    out.close()
+  }
+
+
   def createGnuplotScript(fileName: String, YTitle: String, XTitle: String): Unit = {
     val out = new PrintWriter(directory + fileName)
     var scriptCode = "set terminal x11 size 1360, 700\n" +

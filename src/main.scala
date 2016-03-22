@@ -1,4 +1,4 @@
-import models.{Model, NoQueueMultiThread}
+import models.{ClosedMultiThread, Model, NoQueueMultiThread}
 import tasks._
 
 /**
@@ -6,8 +6,8 @@ import tasks._
   */
 
 object main {
-  val lambda = 1 / 30.0
-  val mu = 1 / 123.0
+  val lambda = 121 // 1 / 30.0
+  val mu = 27 //1 / 123.0
   val nu = mu / 2.0
 
   def main(args: Array[String]): Unit = {
@@ -21,6 +21,7 @@ object main {
     task2.execute
     new Task3(lambda, mu, task1.onePercent).execute
     new Task4(lambda, mu, task1.onePercent, nu).execute
+    new Task5().execute
   }
 
   def test() = {

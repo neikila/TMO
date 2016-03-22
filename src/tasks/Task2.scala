@@ -1,7 +1,5 @@
 package tasks
 
-import java.io.File
-
 import models.QueueWithMultiThread
 import utils.Gnuplot
 
@@ -31,8 +29,6 @@ class Task2 (val lambda: Double, val mu: Double, val start: Int) extends Task {
     resultsProb.foreach((result) =>
       println("i = " + result._1 + " prob = " + result._2)
     )
-
-    i = 0
 
     val plotter = new Gnuplot(dir)
     plotter.printToFile("Reject probability", resultsProb)

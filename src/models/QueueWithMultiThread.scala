@@ -20,9 +20,9 @@ class QueueWithMultiThread (val lambda: Double, val mu: Double, val states: Inte
     probabilities.foldLeft(0.0)((a, b) => { if (counter < units) counter += 1; a + counter * b })
   }
 
-  override def getLoad: Double = load / units
+  def getLoad: Double = load / units
 
-  override def getReject: Double = probabilities(states - 1)
+  def getReject: Double = probabilities(states - 1)
 
   override def getProbability(i: Int): Double = probabilities(i)
 

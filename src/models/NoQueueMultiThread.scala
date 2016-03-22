@@ -17,9 +17,9 @@ class NoQueueMultiThread(val lambda: Double, val mu: Double, val n: Integer) ext
 
   override def getProbabilityDivPo(i: Integer): Double = math.pow(a, i.doubleValue()) / factor(i)
 
-  override def getReject = getProbability(n)
+  def getReject = getProbability(n)
 
-  override def getLoad: Double = load / n
+  def getLoad: Double = load / n
 
   override def getProbability(i: Int): Double = probabilities(i)
 }
