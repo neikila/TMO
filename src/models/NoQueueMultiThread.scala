@@ -9,7 +9,7 @@ import Utils._
 class NoQueueMultiThread(val lambda: Double, val mu: Double, val n: Integer) extends Model {
 
   val a = lambda / mu
-  val p0 = 1.0 / List.tabulate(n + 1)(num => getProbabilityDivPo(num)).sum
+  val p0 = 1.0 / (0 to n).foldLeft(0.0)(_ + getProbabilityDivPo(_))
   val probabilities: IndexedSeq[Double] = IndexedSeq.tabulate(n + 1)(num => p0 * getProbabilityDivPo(num))
 
   val load = {

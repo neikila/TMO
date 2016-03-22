@@ -1,6 +1,6 @@
 package tasks
 
-import models.{NoQueueMultiThread, Model}
+import models.{QueueWithMiltiThread, NoQueueMultiThread, Model}
 
 /**
   * Created by neikila.
@@ -11,7 +11,8 @@ class Test extends Task{
     val lambda = 37
     val mu = 7
 
-    var result: Model = new NoQueueMultiThread(lambda, mu, 6)
+    val result: Model = new NoQueueMultiThread(lambda, mu, 6)
+//    val result: Model = new QueueWithMiltiThread(lambda, mu, 7, 6)
 
     println("Reject = " + result.getReject)
     println("Load = " + result.getLoad)
